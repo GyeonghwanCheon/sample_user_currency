@@ -2,11 +2,10 @@ package com.sparta.currency_user.service;
 
 
 import com.sparta.currency_user.dto.ExchangeResponseDto;
+import com.sparta.currency_user.dto.ExchangeTotalResponseDto;
 import com.sparta.currency_user.entity.Currency;
 import com.sparta.currency_user.entity.User;
 import com.sparta.currency_user.entity.UserCurrency;
-import com.sparta.currency_user.error.errorcode.ErrorCode;
-import com.sparta.currency_user.error.exception.CustomException;
 import com.sparta.currency_user.repository.CurrencyRepository;
 import com.sparta.currency_user.repository.UserCurrencyRepository;
 import com.sparta.currency_user.repository.UserRepository;
@@ -99,5 +98,14 @@ public class ExchangeService {
 
 
         userCurrencyRepository.save(userCurrency);
+    }
+
+    // 고객의 모든 환전 요청을 그룹화하여 조회
+    public ExchangeTotalResponseDto totalExchange(Long userid) {
+
+        ExchangeTotalResponseDto responseDto = userCurrencyRepository.findByTotalExchangeUserId(userid);
+
+        return responseDto;
+
     }
 }

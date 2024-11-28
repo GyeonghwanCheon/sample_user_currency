@@ -1,7 +1,6 @@
 package com.sparta.currency_user.dto;
 
 import com.sparta.currency_user.entity.User;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 

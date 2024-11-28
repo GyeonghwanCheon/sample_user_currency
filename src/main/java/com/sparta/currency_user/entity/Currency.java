@@ -1,9 +1,7 @@
 package com.sparta.currency_user.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;

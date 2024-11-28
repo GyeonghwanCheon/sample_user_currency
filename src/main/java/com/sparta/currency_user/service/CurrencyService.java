@@ -3,8 +3,6 @@ package com.sparta.currency_user.service;
 import com.sparta.currency_user.dto.CurrencyRequestDto;
 import com.sparta.currency_user.dto.CurrencyResponseDto;
 import com.sparta.currency_user.entity.Currency;
-import com.sparta.currency_user.error.errorcode.ErrorCode;
-import com.sparta.currency_user.error.exception.CustomException;
 import com.sparta.currency_user.repository.CurrencyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

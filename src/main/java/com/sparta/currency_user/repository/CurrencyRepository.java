@@ -1,7 +1,6 @@
 package com.sparta.currency_user.repository;
 
 import com.sparta.currency_user.entity.Currency;
-import com.sparta.currency_user.entity.User;
 import com.sparta.currency_user.error.errorcode.ErrorCode;
 import com.sparta.currency_user.error.exception.CustomException;
 import org.springframework.data.jpa.repository.JpaRepository;
