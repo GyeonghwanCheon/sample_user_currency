@@ -34,9 +34,9 @@ public class UserService {
     }
 
     @Transactional
-    public void deleteUserById(Long id) {
-        this.findUserById(id);
-        userRepository.deleteById(id);
+    public void deleteUserById(Long userid) {
+        this.findUserById(userid);
+        userRepository.deleteById(userid);
     }
 
 }

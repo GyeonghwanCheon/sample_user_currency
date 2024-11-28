@@ -39,4 +39,14 @@ public class CurrencyExchangeController {
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
+
+    //특정 환전 요청 상태를 취소로 변경
+    @PatchMapping("/{userCurrencyid}")
+    public ResponseEntity<String> updateStatus(@PathVariable Long userCurrencyid) {
+        exchangeService.updateStatus(userCurrencyid);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 }

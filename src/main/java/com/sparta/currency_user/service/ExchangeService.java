@@ -89,6 +89,18 @@ public class ExchangeService {
         return exchangeResponseDtoList;
     }
 
+    // 특정 환전 요청 상태를 취소로 변경
+    public void updateStatus(Long userCurrencyid) {
+        UserCurrency userCurrency = userCurrencyRepository.findById(userCurrencyid).orElseThrow(
+                () -> new IllegalArgumentException("환전 요청 정보를 찾을 수 없습니다."));
+
+        if("NORMAL".equals(userCurrency.getStatus())) {
+            userCurrency.setStatus("CANCELED");
+        } else if("CANCELED".equals(userCurrency.getStatus())) {
+            userCurrency.setStatus("NORMAL");
+        }
 
 
+        userCurrencyRepository.save(userCurrency);
+    }
 }
