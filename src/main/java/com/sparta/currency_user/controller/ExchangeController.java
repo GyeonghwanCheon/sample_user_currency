@@ -29,7 +29,7 @@ public class ExchangeController {
 
     }
 
-    // 특정 고객 환불 요청 조회
+    // 특정 고객 환전 요청 조회
     @GetMapping("/{userid}")
     public ResponseEntity<List<ExchangeResponseDto>> findByUserCurrency(@PathVariable Long userid) {
         List<ExchangeResponseDto> responseDto = exchangeService.findByUserCurrency(userid);

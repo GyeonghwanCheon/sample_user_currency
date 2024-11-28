@@ -103,6 +103,8 @@ public class ExchangeService {
     // 고객의 모든 환전 요청을 그룹화하여 조회
     public ExchangeTotalResponseDto totalExchange(Long userid) {
 
+        User user = userRepository.findByUserIdOrElseThrow(userid);
+
         ExchangeTotalResponseDto responseDto = userCurrencyRepository.findByTotalExchangeUserId(userid);
 
         return responseDto;
