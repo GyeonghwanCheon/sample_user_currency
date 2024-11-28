@@ -321,5 +321,24 @@
   ```
   ---
 
+## ERD
+![ERD_IMAGE](https://github.com/user-attachments/assets/8ea5bf4c-fb6c-478f-92bd-799d0a09f90a)
+
+
+---
+
+## SQL
+![SQL_IMAGE](https://github.com/user-attachments/assets/1b07d3a3-00c4-4d58-8948-c7b3f119006e)
+![SQL_IMAGE2](https://github.com/user-attachments/assets/1fcdc053-b198-4c51-942f-3f36a9a8f158)
+![SQL_IMAGE3](https://github.com/user-attachments/assets/27cc6f56-cf9c-4e7a-8958-438fe7bbeb89)
+
+
+
+
+
+
+---
+
+
 
 
