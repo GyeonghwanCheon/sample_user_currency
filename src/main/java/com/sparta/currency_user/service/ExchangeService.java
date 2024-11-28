@@ -27,7 +27,8 @@ public class ExchangeService {
 
         // 고객 확인
         User user = userRepository.findById(userid).orElseThrow(
-                () -> new IllegalArgumentException("유저 ID를 찾을 수 없습니다."));
+                () -> new IllegalArgumentException("유저 ID를 찾을 수 없습니다.")
+        );
 
         // 통화 확인
         Currency currency = currencyRepository.findById(currencyid).orElseThrow(
