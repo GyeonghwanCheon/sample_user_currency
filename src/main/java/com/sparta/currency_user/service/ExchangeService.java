@@ -5,6 +5,8 @@ import com.sparta.currency_user.dto.ExchangeResponseDto;
 import com.sparta.currency_user.entity.Currency;
 import com.sparta.currency_user.entity.User;
 import com.sparta.currency_user.entity.UserCurrency;
+import com.sparta.currency_user.error.errorcode.ErrorCode;
+import com.sparta.currency_user.error.exception.CustomException;
 import com.sparta.currency_user.repository.CurrencyRepository;
 import com.sparta.currency_user.repository.UserCurrencyRepository;
 import com.sparta.currency_user.repository.UserRepository;
@@ -26,13 +28,9 @@ public class ExchangeService {
     public ExchangeResponseDto exchangeCurrency(Long userid, Long currencyid, BigDecimal amountInKrw) {
 
         // 고객 확인
-        User user = userRepository.findById(userid).orElseThrow(
-                () -> new IllegalArgumentException("유저 ID를 찾을 수 없습니다.")
-        );
-
+        User user = userRepository.findByUserIdOrElseThrow(userid);
         // 통화 확인
-        Currency currency = currencyRepository.findById(currencyid).orElseThrow(
-                () -> new IllegalArgumentException("통화 ID를 찾을 수 없습니다."));
+        Currency currency = currencyRepository.findByCurrencyIdOrElseThrow(currencyid);
 
 
         BigDecimal exchangeRate = currency.getExchangeRate();
@@ -64,8 +62,7 @@ public class ExchangeService {
     // 특정 고객 환불 요청 조회
     public List<ExchangeResponseDto> findByUserCurrency(Long userid) {
         // 고객 확인
-        User user = userRepository.findById(userid).orElseThrow(
-                () -> new IllegalArgumentException("유저 ID를 찾을 수 없습니다."));
+        User user = userRepository.findByUserIdOrElseThrow(userid);
 
         // 고객의 모든 환불 요청 조회
         List<UserCurrency> userCurrencyList = userCurrencyRepository.findAllByUserId(userid);
@@ -92,8 +89,7 @@ public class ExchangeService {
 
     // 특정 환전 요청 상태를 취소로 변경
     public void updateStatus(Long userCurrencyid) {
-        UserCurrency userCurrency = userCurrencyRepository.findById(userCurrencyid).orElseThrow(
-                () -> new IllegalArgumentException("환전 요청 정보를 찾을 수 없습니다."));
+        UserCurrency userCurrency = userCurrencyRepository.findByUserCurrencyIdOrElseThrow(userCurrencyid);
 
         if("NORMAL".equals(userCurrency.getStatus())) {
             userCurrency.setStatus("CANCELED");
