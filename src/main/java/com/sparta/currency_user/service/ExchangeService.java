@@ -24,6 +24,8 @@ public class ExchangeService {
     private final CurrencyRepository currencyRepository;
     private final UserCurrencyRepository userCurrencyRepository;
 
+
+    // 환전 요청
     public ExchangeResponseDto exchangeCurrency(Long userid, Long currencyid, BigDecimal amountInKrw) {
 
         // 고객 확인
@@ -58,12 +60,12 @@ public class ExchangeService {
     }
 
 
-    // 특정 고객 환불 요청 조회
+    // 특정 고객 환전 요청 조회
     public List<ExchangeResponseDto> findByUserCurrency(Long userid) {
         // 고객 확인
         User user = userRepository.findByUserIdOrElseThrow(userid);
 
-        // 고객의 모든 환불 요청 조회
+        // 고객의 모든 환전 요청 조회
         List<UserCurrency> userCurrencyList = userCurrencyRepository.findAllByUserId(userid);
 
         // 데이터 변환
