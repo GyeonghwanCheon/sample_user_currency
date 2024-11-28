@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,14 +23,14 @@ public class ExchangeService {
     private final CurrencyRepository currencyRepository;
     private final UserCurrencyRepository userCurrencyRepository;
 
-    public ExchangeResponseDto exchangeCurrency(Long userId, Long currencyId, BigDecimal amountInKrw) {
+    public ExchangeResponseDto exchangeCurrency(Long userid, Long currencyid, BigDecimal amountInKrw) {
 
         // 고객 확인
-        User user = userRepository.findById(userId).orElseThrow(
+        User user = userRepository.findById(userid).orElseThrow(
                 () -> new IllegalArgumentException("유저 ID를 찾을 수 없습니다."));
 
         // 통화 확인
-        Currency currency = currencyRepository.findById(currencyId).orElseThrow(
+        Currency currency = currencyRepository.findById(currencyid).orElseThrow(
                 () -> new IllegalArgumentException("통화 ID를 찾을 수 없습니다."));
 
 
@@ -56,4 +58,37 @@ public class ExchangeService {
 
         return responseDto;
     }
+
+
+    // 특정 고객 환불 요청 조회
+    public List<ExchangeResponseDto> findByUserCurrency(Long userid) {
+        // 고객 확인
+        User user = userRepository.findById(userid).orElseThrow(
+                () -> new IllegalArgumentException("유저 ID를 찾을 수 없습니다."));
+
+        // 고객의 모든 환불 요청 조회
+        List<UserCurrency> userCurrencyList = userCurrencyRepository.findAllByUserId(userid);
+
+        // 데이터 변환
+        List<ExchangeResponseDto> exchangeResponseDtoList = new ArrayList<>();
+
+
+        for (UserCurrency userCurrency : userCurrencyList) {
+            ExchangeResponseDto responseDto = new ExchangeResponseDto(
+                    user.getId(),
+                    user.getName(),
+                    userCurrency.getCurrency().getCurrencyName(),
+                    userCurrency.getAmount_in_krw(),
+                    userCurrency.getAmount_after_exchange(),
+                    userCurrency.getStatus()
+            );
+
+            exchangeResponseDtoList.add(responseDto);
+        }
+
+        return exchangeResponseDtoList;
+    }
+
+
+
 }

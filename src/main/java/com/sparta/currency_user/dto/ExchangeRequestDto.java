@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 public class ExchangeRequestDto {
 
     // 고객 id
-    private Long userId;
+    private Long userid;
 
     // 환전 대상 통화 id
-    private Long currencyId;
+    private Long currencyid;
 
     // 환전 전 금액
     private BigDecimal amountInKrw;

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface UserCurrencyRepository extends JpaRepository<UserCurrency, Long> {
 
+    List<UserCurrency> findAllByUserId(Long userId);
+
 }
