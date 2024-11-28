@@ -332,12 +332,17 @@
 ![SQL_IMAGE2](https://github.com/user-attachments/assets/1fcdc053-b198-4c51-942f-3f36a9a8f158)
 ![SQL_IMAGE3](https://github.com/user-attachments/assets/27cc6f56-cf9c-4e7a-8958-438fe7bbeb89)
 
-
-
-
-
-
 ---
+
+## 5.참고자료
++ https://jsonobject.tistory.com/466
++ https://programmingrecoding.tistory.com/13
++ https://velog.io/@minji/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-Spring-Boot%EC%9D%98-Validation-Valid-%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%EC%9C%BC%EB%A1%9C-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%A6%9D%ED%95%98%EA%B8%B0
++ https://ehdals9412.tistory.com/42
+---
+
++ Version : 1.0
+
 
 
 
